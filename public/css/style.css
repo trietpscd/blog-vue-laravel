@@ -70,6 +70,9 @@
     float: right;
     padding-top: 16px;
 }
+.form-re-log .help-block {
+    color: #f44336;
+}
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {

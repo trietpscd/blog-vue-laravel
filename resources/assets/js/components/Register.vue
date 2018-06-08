@@ -31,7 +31,7 @@
 			  </div>
 			  <div class="Container" style="background-color:#f1f1f1">
 			    <button type="submit">Regiter</button>
-			    <button type="button" class="cancelbtn">Cancel</button>
+			    <button type="button" class="cancelbtn" @click="ResetInput()">Cancel</button>
 			  </div>
 			</form>
 		</div>
@@ -78,6 +78,11 @@
                     },
                     redirect: null
                 });     
+        	},
+        	ResetInput: function () {
+        		this.name = ''
+        		this.email = ''
+        		this.password = ''
         	}
         },
     }

@@ -30,7 +30,7 @@ class AuthController extends Controller
 		    $user->name = $request->name;
 		    $user->password = bcrypt($request->password);
 		    $user->save();
-		    return response()([
+		    return response()->json([
 		        'status' => 'success',
 		        'data' => $user
 		       ], 200);
@@ -51,7 +51,8 @@ class AuthController extends Controller
         return response([
             'status' => 'success',
             'token' => $token
-        ], 200);
+        ], 200)
+        ->header('Authorization', $token);
     }
 
     public function user(Request $request)
@@ -62,10 +63,20 @@ class AuthController extends Controller
 	            'data' => $user
 	        ]);
 	}
+
 	public function refresh()
 	{
 	    return response([
 	            'status' => 'success'
 	        ]);
 	}
+
+    public function logout()
+    {
+        JWTAuth::invalidate();
+        return response([
+                'status' => 'success',
+                'msg' => 'Logged out Successfully.'
+            ], 200);
+    }
 }

@@ -27,11 +27,14 @@
 							<button type="submit" class="btn btn-primary">Submit</button>
 						</form>
 						<ul class="nav navbar-nav navbar-right">
-							<li>
+							<li v-if="!$auth.check()">
 								<router-link class="btn btn-xs btn-warning" v-bind:to="'/login'">Login</router-link>
 							</li>
-							<li>
+							<li v-if="!$auth.check()">
 								<router-link class="btn btn-xs btn-primary" v-bind:to="'/register'">Regiter</router-link>
+							</li>
+							<li v-if="$auth.check()">
+								<a href="#" class="btn btn-xs btn-warning" @click.prevent="$auth.logout()">Logout</a>
 							</li>
 							<!-- <li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -59,3 +62,17 @@
         </div>
     </div>
 </template>
+
+<script>
+	import { eventBus } from './app'
+    export default {
+        data() {
+        	return {
+        		checkLogin: false
+        	}
+        },
+        mounted() {
+            console.log('index')
+        },
+    }
+</script>

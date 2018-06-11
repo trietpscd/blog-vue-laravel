@@ -12,11 +12,12 @@ import Login from './components/Login.vue'
 import Register from './components/Register.vue'
 import Dashboard from './components/Home.vue' 
 
-
 axios.defaults.baseURL = 'http://localhost:8000/api'
 
+export const eventBus = new Vue()
+
 const router = new VueRouter({
-    mode: 'history',
+    // mode: 'history',
     routes: [{
         path: '/',
         name: 'content',

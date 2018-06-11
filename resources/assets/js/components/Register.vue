@@ -65,7 +65,7 @@
                     	if(resp.data.status === 'error') {
                     		this.error = true;
                     		this.errors = resp.data.error;
-                    		console.log(this.errors.email[0]);
+                    		console.log(this.errors);
                     	} else {
                     		this.success = true
                     	}

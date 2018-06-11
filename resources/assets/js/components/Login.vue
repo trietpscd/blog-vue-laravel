@@ -36,6 +36,7 @@
 </template>
 
 <script>
+
     export default {
         mounted() {
             console.log('login')
@@ -49,6 +50,7 @@
         		errors: {
 
         		},
+        		checkLogin: false,
 
         	}
         },

@@ -15,8 +15,8 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Link</a></li>
-					<li><a href="#">Link</a></li>
+					<li class="active"><a href="#">{{ link1 }}</a></li>
+					<li><a href="#">{{ link2 }}</a></li>
 				</ul>
 				<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">
@@ -46,9 +46,18 @@
 	</nav>
 </template>
 <script>
+	import { EventBus } from './event-bus.js'
     export default {
+        data() {
+        	return {
+        		link1: 'Link1',
+        		link2: 'Link2',
+        	}
+        },
         mounted() {
-            console.log('Component mounted.')
-        }
+            EventBus.$on('dataShare', (event) => {
+            	this.link1 = event
+            })
+        },
     }
 </script>

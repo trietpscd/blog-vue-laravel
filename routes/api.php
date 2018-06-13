@@ -23,3 +23,7 @@ Route::group(['namespace' => 'API','prefix' => 'auth'], function () {
 	  Route::get('refresh', 'AuthController@refresh');
 	});
 });
+// CURD POST
+Route::group(['middleware' => 'jwt.auth', 'namespace' => 'API'], function () {
+	Route::resource('posts', 'PostController');
+});

@@ -11,6 +11,9 @@
 .navbar-right li{
 	margin: 0 5px;
 }
+.help-block {
+    color: #f44336;
+}
 /*login*/
 .form-re-log {
 		width: 60%;
@@ -70,8 +73,11 @@
     float: right;
     padding-top: 16px;
 }
-.form-re-log .help-block {
-    color: #f44336;
+
+/**/
+.form-post{
+    width: 60%;
+    margin: 0 auto;
 }
 
 /* Change styles for span and cancel button on extra small screens */

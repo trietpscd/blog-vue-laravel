@@ -68,7 +68,7 @@
         				console.log(resp);
         			},
         			rememberMe: true,
-		            redirect: '/dashboard',
+		            redirect: '/posts',
 		            fetchUser: true,
         		})
         	}

@@ -10,7 +10,10 @@ import App from './App.vue'
 import Content from './components/Content.vue'
 import Login from './components/Login.vue'
 import Register from './components/Register.vue'
-import Dashboard from './components/Home.vue' 
+import PostList from './components/posts/List.vue'
+import PostView from './components/posts/View.vue'
+import PostUpdate from './components/posts/Update.vue'
+import PostCreate from './components/posts/Create.vue'  
 
 axios.defaults.baseURL = 'http://localhost:8000/api'
 
@@ -37,13 +40,36 @@ const router = new VueRouter({
             auth: false
         }
     },{
-        path: '/dashboard',
-        name: 'dashboard',
-        component: Dashboard,
+        path: '/posts',
+        name: 'PostList',
+        component: PostList,
         meta: {
             auth: true
         }
-    }]
+    },{
+        path: '/posts/create',
+        name: 'PostCreate',
+        component: PostCreate,
+        meta: {
+            auth: true
+        }
+    },{
+        path: '/posts/view/:id',
+        name: 'PostView',
+        component: PostView,
+        meta: {
+            auth: true
+        }
+    },{
+        path: '/posts/update/:id',
+        name: 'PostUpdate',
+        component: PostUpdate,
+        meta: {
+            auth: true
+        }
+    }
+
+    ]
 });
 
 

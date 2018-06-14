@@ -15,7 +15,9 @@
 </head>
 <body>
 <div id="app">
-    <app></app>
+	<div class="container">
+		<app></app>
+	</div>
 </div>
 
 <script>

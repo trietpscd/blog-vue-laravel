@@ -3,7 +3,7 @@
 		<div id="login" class="form-re-log">
 		    <h2>Login Form</h2>
 			<div class="alert alert-danger" v-if="error && !success">
-	            <p>{{ errors.msg }}</p>
+	            <p>{{ errors }}</p>
 	        </div>
 	        <div class="alert alert-success" v-if="success">
 	            <p>Login completed.</p>
@@ -47,10 +47,7 @@
         		password: '',
         		error: false,
         		success: false,
-        		errors: {
-
-        		},
-        		checkLogin: false,
+        		errors:'',
 
         	}
         },
@@ -62,10 +59,12 @@
         				password: this.password
         			},
         			success: function(resp) {
-        				console.log(resp);
+        				this.success = true
+        				this.error = false
         			},
         			error: function (resp) {
-        				console.log(resp);
+        				this.error = true
+        				this.errors = 'Email or password is not correct.'
         			},
         			rememberMe: true,
 		            redirect: '/posts',

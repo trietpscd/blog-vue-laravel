@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Validator;
+use DB;
 
 class PostController extends Controller
 {
@@ -17,7 +18,9 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('created_at', 'desc')
+                    ->orderBy('updated_at', 'desc')
+                    ->get();
 
         if ($posts) {
             return response()->json([
@@ -95,6 +98,26 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validator = Validator::make($request->all(),[
+            'title' => 'required|string',
+            'body' => 'required|string',
+        ]);
+        if($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'error' => $validator->errors()->toArray()
+            ]);
+        }else{
+            $post = Post::findOrFail($id);
+            $post->title = $request['title'];
+            $post->body = $request['body'];
+            $post->save();
+            // $post->update($request->all());
+            return response()->json([
+                'status' => 'success',
+                'msg' => 'Update post successfuly.'
+               ], 200);
+        }
     }
 
     /**
